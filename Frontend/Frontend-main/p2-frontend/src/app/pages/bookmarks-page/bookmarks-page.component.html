@@ -1,0 +1,27 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="post-feed">
+  <header class = "title">
+    <app-title [title] = "title"></app-title>
+  </header>
+  <div class="feed-container">
+    <app-feed [pageCount]="pageCount"></app-feed>
+  </div>
+</div>
+
+<div *ngIf="_userIsPosting" class="post-form">
+  <app-new-post-form [userObj]="userObj"></app-new-post-form>
+</div>
+
+<div *ngIf="_notificationsDisplay">
+  <app-notifications></app-notifications>
+</div>
+
+<div class="navbar fixed-bottom">
+  <div class="position-absolute bottom-0 end-0 m-5">
+    <app-action-menu
+      (eventFromActionNotification)="receiveNotificationStatus($event)"
+      (eventFromActionMenu)="receivePostStatus($event)"
+    ></app-action-menu>
+  </div>
+</div>

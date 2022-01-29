@@ -1,0 +1,40 @@
+<div class="sidebar-container">
+  <div class="logo">Ocean</div>
+  <ul class="">
+    <!-- search bar component -->
+    <app-search></app-search>
+    <li>
+      <a (click)="goHome()">
+        <i class="fa fa-home" aria-hidden="true" (click)="goHome()"></i> Home
+      </a>
+    </li>
+    <li>
+      <a (click)="explore()">
+        <i class="fa fa-hashtag" aria-hidden="true"></i> Explore
+      </a>
+    </li>
+    <li>
+      <a (click)="onViewById()"> My Feed </a>
+    </li>
+    <li>
+      <a (click)="toggleProfile($event)">
+        <i class="fa fa-id-card-o" aria-hidden="true"></i> My Profile
+      </a>
+    </li>
+    <li>
+      <a (click)="gotoBookmarks()">
+        <i class="fa fa-bookmark-o" aria-hidden="true"></i> My Bookmarks
+      </a>
+    </li>
+  </ul>
+  <app-buttons
+    class="logoutBtn"
+    id="logoutbtn"
+    (onClick)="logout($event)"
+    [label]="logOutLabel"
+  ></app-buttons>
+</div>
+<app-view-profile
+  [style.left]="profilePosition"
+  (hide)="profilePosition = '-64rem'"
+></app-view-profile>

@@ -1,0 +1,41 @@
+<div class="close-profile" (click)="toggleProfile($event)">X</div>
+<div id="profile-container">
+  <!-- use ngIf to swap between view profile and update profile -->
+  <div class="view-update-container" [ngSwitch]="viewOrUpdate">
+    <!-- VIEW PROFILE -->
+    <div class="view-profile" *ngSwitchCase="'view'">
+      <div class="profile-body">
+        <div class="profile-pic">
+          <app-profile-pic
+            [passed]="'img'"
+            [imgSrc]="proPicUrl"
+          ></app-profile-pic>
+        </div>
+        <div class="user-name">
+          <h2>{{ firstName }} {{ lastName }}</h2>
+          <h4>@{{ username }}</h4>
+        </div>
+        <div class="user-birthday">
+          <p>Birthday: {{ bday }}</p>
+        </div>
+        <div class="user-about-me">
+          <p>
+            {{ aboutMe }}
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- UPDATE PROFILE -->
+    <div class="update-container" *ngSwitchCase="'update'">
+      <app-update-profile-form
+        (sendOutputText)="receiveOutputText($event)"
+      ></app-update-profile-form>
+    </div>
+  </div>
+  <app-buttons
+    class="updateBtn"
+    id="updateBtn"
+    (click)="updateProfile()"
+    [label]="updateLabel"
+  ></app-buttons>
+</div>

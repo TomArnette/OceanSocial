@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.6rem;
+}
+
+.post-feed {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.profile-container {
+  position: fixed;
+  right: 1.6rem;
+}
+
+.post-form {
+  position: fixed;
+  right: 1.6rem;
+}
+

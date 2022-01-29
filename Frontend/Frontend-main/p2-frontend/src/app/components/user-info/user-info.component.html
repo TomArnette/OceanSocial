@@ -1,0 +1,19 @@
+<div class="user-info-container">
+  <div class="profile-body">
+    <div class="profile-pic">
+      <app-profile-pic [passed] = "'img'" [imgSrc]="proPicUrl"></app-profile-pic>
+    </div>
+    <div class="user-name">
+      <h2>{{ firstName }} {{ lastName }}</h2>
+      <h4>@{{ username }}</h4>
+    </div>
+    <div class="user-birthday">
+      <p>Birthday: {{ bday }}</p>
+    </div>
+    <div class="user-about-me">
+      <p>
+        {{ aboutMe }}
+      </p>
+    </div>
+  </div>
+</div>

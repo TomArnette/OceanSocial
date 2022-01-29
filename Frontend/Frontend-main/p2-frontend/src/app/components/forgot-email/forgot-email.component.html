@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="forgot-container">
+    <form class="forgot-form" [formGroup]="forgotForm">
+      <div class="form-row">
+        <label for="username">Enter your username:</label>
+        <input
+          id="username"
+          class="text-field"
+          type="text"
+          formControlName="username"
+        />
+        <div class="warn">
+          <ng-container>
+            <div
+              class="invalid"
+              *ngIf="
+                username.hasError('required') &&
+                (username.dirty || username.touched)
+              "
+            >
+              Username cannot be empty
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <app-buttons
+        class="loginPgBtn"
+        (onClick)="sendPasswordEmail($event)"
+        label="Submit"
+      ></app-buttons>
+
+      <a (click)="backToLogin()">Back to login</a>
+    </form>
+  </div>
+</div>

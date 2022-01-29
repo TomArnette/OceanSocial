@@ -1,0 +1,70 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.6rem;
+}
+header {
+  top: 2rem;
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  background-color: var(--component-bg);
+  height: 9rem;
+  margin-bottom: 0.8rem;
+}
+
+.list-users {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.users-container {
+  top: 11rem;
+  overflow: auto;
+  width: 500px;
+  margin-bottom: 1.6rem;
+  padding: 1.6rem;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.6rem;
+  background-color: var(--component-bg);
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+}
+.pic-name {
+  display: flex;
+  justify-content: space-evenly;
+  width: fit-content;
+  padding: 10px;
+}
+.name {
+  width: fit-content;
+  padding: 10px;
+  font-size: medium;
+  color: var(--font-color);
+}
+.about-me {
+  width: 200px;
+  text-align: center;
+  display: flex;
+  padding: 25px;
+  color: var(--font-color);
+}
+
+.followBtn {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.post-form {
+  position: fixed;
+  right: 1.6rem;
+}

@@ -1,0 +1,17 @@
+.user-link {
+  width: 200px;
+  padding: 10px 15px;
+  text-align: center;
+  font-size: 12px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.user-link a {
+  text-decoration: none;
+  color: var(--links);
+}
+
+.user-link a:hover {
+  color: var(--btn-text);
+}

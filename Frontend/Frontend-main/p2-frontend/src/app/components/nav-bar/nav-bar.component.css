@@ -1,0 +1,177 @@
+:host {
+  position: fixed;
+}
+
+.sidebar-container {
+  background-color: var(--component-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  width: 265px;
+  height: max-content;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 1.6rem;
+  color: var(--font-color);
+  padding: 1.6rem;
+  z-index: 1;
+}
+
+.logo {
+  padding: 2.4rem;
+  font-family: "Caveat", sans-serif;
+  font-size: 7.8rem;
+  font-weight: bold;
+  background: #624af2;
+  background: -webkit-linear-gradient(
+    to right,
+    var(--gradient-left) 0%,
+    var(--gradient-right) 100%
+  );
+  background: -moz-linear-gradient(
+    to right,
+    var(--gradient-left) 0%,
+    var(--gradient-right) 100%
+  );
+  background: linear-gradient(
+    to right,
+    var(--gradient-left) 0%,
+    var(--gradient-right) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.2rem;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 0.8rem;
+}
+
+li:hover {
+  color: var(--links);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 2.4rem;
+  color: var(--font-color);
+}
+
+.view-profile {
+  display: flex;
+}
+
+.view-profile ::ng-deep a {
+  padding: 0;
+}
+
+.sidebar-navigation li {
+  background-color: transparent;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  line-height: 20px;
+  font-size: x-large;
+  font-style: italic;
+}
+
+.sidebar-navigation li a {
+  padding: 10px 15px 10px 30px;
+  display: block;
+  color: #1a1a1a;
+  cursor: pointer;
+}
+
+.sidebar-navigation li .fa {
+  margin-right: 10px;
+}
+
+.sidebar-navigation li a:active,
+.sidebar-navigation li a:hover,
+.sidebar-navigation li a:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+.sidebar-navigation li::before {
+  background-color: #5f2eea;
+  position: absolute;
+  content: "";
+  height: 100%;
+  left: 0;
+  top: 0;
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+  width: 3px;
+  z-index: -1;
+}
+
+.sidebar-navigation li:hover::before {
+  width: 100%;
+}
+
+.sidebar-navigation .header {
+  font-size: 12px;
+  text-transform: uppercase;
+  background-color: none;
+  padding: 10px 15px 10px 30px;
+}
+
+.sidebar-navigation .header::before {
+  background-color: transparent;
+}
+
+.sidebar-logo {
+  font-family: "Caveat", cursive;
+  font-size: 6.4rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  color: #1637f3;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-right: 40px;
+  text-align: center;
+}
+
+/* Style the search box inside the navigation bar */
+.sidebar-navigation input[type="text"] {
+  float: none;
+  padding: 6px;
+  border: none;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 17px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar-navigation {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar-navigation a {
+    float: left;
+  }
+  div.content {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar-navigation a {
+    text-align: center;
+    float: none;
+  }
+}

@@ -1,0 +1,93 @@
+.profile-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1.6rem;
+  border-radius: 1.6rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  padding: 3.2rem;
+  background-color: white;
+  margin-top: 5rem;
+}
+
+#profile-image-form,
+#profile-details-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+#profile-img {
+  width: 250px;
+  border-radius: 1.6rem;
+}
+
+.error {
+  color: #ed2e7e;
+  height: 1.6rem;
+}
+
+p {
+  color: #00ba88;
+}
+
+h2 {
+  font-weight: bold;
+  color: #14142b;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.button-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+label {
+  color: #6e7191;
+}
+
+textarea {
+  width: 325px;
+  background-color: #eff0f7;
+  border: 2px solid transparent;
+  border-radius: 1.6rem;
+  padding: 2rem 2.4rem;
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+}
+
+textarea:focus,
+textarea:hover {
+  border: 2px solid #5f2eea;
+}
+
+#uploadBtn {
+  width: 325px;
+  height: 6.4rem;
+  background-color: white;
+  border: 2px solid #5f2eea;
+  border-radius: 1.6rem;
+  color: #5f2eea;
+  font-weight: bold;
+}
+
+#uploadBtn:hover {
+  background-color: #5f2eea;
+  color: white;
+}

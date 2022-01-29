@@ -1,0 +1,14 @@
+<div class="container">
+  <div [ngSwitch]="current">
+    <app-login-form
+      *ngSwitchCase="'login'"
+      (toggle)="toggle($event)"
+    ></app-login-form>
+    <app-signup-form
+      *ngSwitchCase="'signup'"
+      (toggle)="toggle($event)"
+    ></app-signup-form>
+    <app-forgot-email *ngSwitchCase="'forgot'" (sendToParent)="backToLogin()">
+    </app-forgot-email>
+  </div>
+</div>

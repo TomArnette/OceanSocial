@@ -1,0 +1,67 @@
+<div class="width">
+<div class="comment-container p-3">
+  <div class="user-info">
+    <app-profile-pic [passed] = "'img2'" [imgSrc]="proPicUrl"></app-profile-pic>
+    <div class="user">
+      <h4 class="name">{{ firstName }}</h4>
+      <a class="username" [routerLink]="['/profile-feed', comment.userId]">
+        @{{ username }}
+      </a>
+     
+    </div>
+  </div>
+  <div class="container">
+    <div class="comment-text row">
+      <div class="col-8">
+        {{ comment.postText }}
+      </div>
+      <div class="col-4">
+        {{comment.postTime | someTimeAgo}}
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- COMMENT & LIKE -->
+  <div class="comment-like">
+    <div class = "icons">
+      
+      <a (click)="toggleComments()"
+        >{{ toggleCommentsText }} {{ commentCount }} comments</a>
+      <div class="comment-like-icons">
+        <i
+          class="fa fa-comment-o fa-2x comment"
+          aria-hidden="true"
+          (click)="displayModal()"
+        ></i>
+       
+      </div>
+    </div>
+  </div>
+
+
+  <!-- COMMENT COMPONENT -->
+  <app-comment-thread
+  [parentId]="comment.postId"
+  [style.display]="showComments ? 'block' : 'none'"
+  (commentCount)="receiveCommentCount($event)"
+  ></app-comment-thread>
+
+</div>
+
+<!-- The Modal -->
+<div
+  id="myModal"
+  class="modal"
+  *ngIf="display"
+  [style.display]="display ? 'block' : 'none'"
+>
+  <!-- Modal content -->
+  <div class="mod-cont">
+    <div class="modal-content">
+      <span class="close" (click)="exit()">&times;</span>
+      <app-new-comment-form [parent]="comment.postId"></app-new-comment-form>
+    </div>
+  </div>
+</div>
+</div>

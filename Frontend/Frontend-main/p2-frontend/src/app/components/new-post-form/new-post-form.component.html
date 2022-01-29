@@ -1,0 +1,89 @@
+<div class="form-container">
+  <h2>Create Post</h2>
+  <form [formGroup]="newPostForm">
+    <div class="input-container">
+      <!-- POST TEXT -->
+      <div class="form-row">
+        <label for="postText">Post:</label>
+        <textarea
+          name="postText"
+          id="postText"
+          placeholder="Add a post"
+          formControlName="postText"
+          cols="30"
+          rows="8"
+        ></textarea>
+        <div class="warn">
+          <ng-container>
+            <div
+              class="invalid"
+              *ngIf="
+                postText.hasError('required') &&
+                (postText.dirty || postText.touched)
+              "
+            >
+              This field must not be empty
+            </div>
+            <div
+              *ngIf="
+                postText.hasError('maxlength') &&
+                (postText.dirty || postText.touched)
+              "
+            >
+              Post must be 250 characters or less
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <!-- POST VIDEO -->
+      <div class="form-row">
+        <label for="postVideoUrl">Add a video to your post:</label>
+        <input
+          type="text"
+          id="postVideoUrl"
+          class="text-field"
+          placeholder="Add YouTube URL here..."
+          formControlName="postYouUrl"
+        />
+        <div class="warn">
+          <ng-container>
+            <div
+              class="invalid"
+              *ngIf="
+                postYouUrl.hasError('youtubeUrl') &&
+                (postYouUrl.dirty || postYouUrl.touched)
+              "
+            >
+              Must be a valid YouTube URL
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <form [formGroup]="imageForm" enctype="multipart/form-data">
+        <!-- POST IMAGE -->
+        <div class="form-row">
+          <button id="uploadBtn" type="button" (click)="fileInput.click()">
+            <span>Add image to post</span>
+            <input
+              #fileInput
+              id="postImage"
+              type="file"
+              (change)="onFileInput($event)"
+              style="display: none"
+              formControlName="imageFile"
+              accept="image/png, image/jpeg"
+            />
+          </button>
+        </div>
+        <img id="profile-img" [src]="displayUrl" />
+      </form>
+    </div>
+
+    <app-buttons
+      class="submitBtn"
+      id="submitBtn"
+      (onClick)="uploadImageAndCreatePost($event)"
+      [label]="submitLabel"
+    ></app-buttons>
+  </form>
+</div>

@@ -1,0 +1,70 @@
+<div class="login-container">
+  <div class="left">
+    <div class="headline">
+      <h2>Ocean</h2>
+      <p>make waves</p>
+    </div>
+    <div class="signup">
+      <p>Don't have an account?</p>
+      <a (click)="toggleForm('signup')">register here</a>
+    </div>
+  </div>
+  <div class="right">
+    <form [formGroup]="loginForm" (ngSubmit)="logIn($event)">
+      <div class="form-row">
+        <label for="username">Username:</label>
+        <input
+          id="username"
+          class="text-field"
+          type="text"
+          formControlName="username"
+        />
+        <div class="warn">
+          <ng-container>
+            <div
+              class="invalid"
+              *ngIf="
+                username.hasError('required') &&
+                (username.dirty || username.touched)
+              "
+            >
+              Username cannot be empty
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="password">Password:</label>
+        <input
+          id="password"
+          class="text-field"
+          type="password"
+          formControlName="password"
+        />
+        <div class="warn">
+          <ng-container>
+            <div
+              *ngIf="
+                password.hasError('required') &&
+                (password.dirty || password.touched)
+              "
+            >
+              Password cannot be empty
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="loginPgBtns">
+        <app-buttons
+          class="loginPgBtn"
+          id="loginBtn"
+          (onClick)="logIn($event)"
+          [label]="logInLabel"
+        ></app-buttons>
+      </div>
+
+      <a class="forgot" (click)="toggleForm('forgot')">Forgot password?</a>
+    </form>
+  </div>
+</div>

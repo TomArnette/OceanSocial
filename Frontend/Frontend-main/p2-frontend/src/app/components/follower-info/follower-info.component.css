@@ -1,0 +1,97 @@
+.user-info-container {
+  position: fixed;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  gap: 3.2rem;
+  border-radius: 1.6rem;
+  color: #14142b;
+  padding: 2.4rem;
+  margin-top: 2%;
+  right: 1%;
+  background-color: var(--component-bg);
+}
+
+.profile-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+.profile-pic {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.user-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-birthday {
+  color: var(--bday);
+  display: flex;
+  justify-content: center;
+  font-weight: lighter;
+}
+
+.user-about-me p {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+div {
+  color: var(--font-color);
+}
+
+.followers-following {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fol-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fol-con {
+  text-align: center;
+  padding: 7px;
+  margin: 3px;
+  border-radius: 8px;
+}
+
+.num {
+  color: var(--following);
+}
+
+.num:hover {
+  cursor: pointer;
+}
+
+.modal-header {
+  background-color: var(--component-bg);
+  color: var(--font-color);
+  border: none;
+}
+
+.modal-body {
+  background-color: var(--component-bg);
+  color: var(--font-color);
+  border: none;
+}
+
+.modal-body a {
+  color: var(--links);
+}

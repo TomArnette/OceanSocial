@@ -1,0 +1,131 @@
+<div class="post-container">
+  <div class="top">
+    <div class="d-flex justify-content-end m-3 post-timestamp">
+      {{post.postTime | someTimeAgo}}
+    </div>
+    <!-- POST IMAGE OR VIDEO -->
+    <div class="post-media">
+      <div *ngIf="hasPic" class="image-container">
+        <img class="post-image" [src]="post.postPicUrl" />
+      </div>
+      <div *ngIf="hasLink">
+        <!-- <img class="post-video" [src]="post.postYouUrl" /> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <!-- USER INFO -->
+    <div class="user-info" *ngIf="post.user != undefined">
+      <app-profile-pic
+        [passed]="'img2'"
+        [imgSrc]="post.user.proPicUrl"
+      ></app-profile-pic>
+      <div class="user">
+        <h4 class="name">{{ post.user.firstName }}</h4>
+        <a class="username" [routerLink]="['/profile-feed', post.user.userId]"
+          >@{{ post.user.username }}</a
+        >
+      </div>
+    </div>
+    <div class="post-text">{{ post.postText }}</div>
+
+    <!-- VIDEO -->
+    <div>
+      <youtube-player
+        *ngIf="hasLink"
+        [videoId]="videoId"
+        suggestedQuality="highres"
+        [height]="240"
+        [width]="320"
+      >
+      </youtube-player>
+    </div>
+
+    <!-- COMMENT & LIKE -->
+    <div class="comment-like">
+      <div class="icons">
+        <div class="like-count" (click)="open(content)">
+          {{ likesInnerText }}
+        </div>
+        <a (click)="toggleComments()"
+          >{{ toggleCommentsText }} {{ commentCount }} comments</a
+        >
+        <div class="comment-like-icons">
+          <i
+            class="fa fa-comment-o fa-2x comment"
+            aria-hidden="true"
+            (click)="displayModal()"
+            [ngStyle]="{ color: 'var(--icons)' }"
+          ></i>
+          <i
+            class="far fa-heart fa-2x like"
+            aria-hidden="true"
+            (click)="like(post.postId)"
+            [ngStyle]="{ color: isLiked ? '#ed2e7e' : 'var(--icons)' }"
+          ></i>
+          <i
+            class="fa fa-bookmark fa-2x bookmark"
+            id="bookmark-icon"
+            aria-hidden="true"
+            (click)="bookmark(post.postId)"
+            [ngStyle]="{ color: isBookmarked ? '#ed2e7e' : 'var(--icons)' }"
+          ></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMENT COMPONENT -->
+  <app-comment-thread
+    [parentId]="post.postId"
+    [style.display]="showComments ? 'block' : 'none'"
+    (commentCount)="receiveCommentCount($event)"
+  ></app-comment-thread>
+</div>
+
+<!-- The Modal -->
+<div
+  id="myModal"
+  class="modal"
+  *ngIf="display"
+  [style.display]="display ? 'block' : 'none'"
+>
+  <!-- Modal content -->
+  <div class="mod-cont">
+    <div class="modal-content">
+      <span class="close" (click)="exit()">&times;</span>
+      <app-new-comment-form [parent]="post.postId"></app-new-comment-form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal to display who liked the post -->
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Likes by:</h4>
+    <button
+      type="button"
+      class="btn btn-danger"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group" *ngFor="let receivedLike of likesOnPost">
+      <div>
+        <a
+          class="name text-decoration-none pe-auto"
+          role="button"
+          data-bs-toggle="button"
+          title="View Profile"
+        >
+          {{ receivedLike.firstName | titlecase }} {{ receivedLike.lastName | titlecase }}</a
+        >
+      </div>
+    </div>
+  </div>
+</ng-template>

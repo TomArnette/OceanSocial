@@ -1,0 +1,44 @@
+<div class="form-container">
+  <h2>Add Comment</h2>
+  <form [formGroup]="newCommentForm">
+    <div class="form-row">
+      <label for="postText">Comment:</label>
+      <textarea
+        name="postText"
+        id=""
+        placeholder="Share a reply"
+        formControlName="postText"
+        cols="30"
+        rows="4"
+      ></textarea>
+      <div class="warn">
+        <ng-container>
+          <div
+            class="invalid"
+            *ngIf="
+              postText.hasError('required') &&
+              (postText.dirty || postText.touched)
+            "
+          >
+            This field must not be empty
+          </div>
+          <div
+            *ngIf="
+              postText.hasError('maxlength') &&
+              (postText.dirty || postText.touched)
+            "
+          >
+            Post must be 150 characters or less
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <app-buttons
+      class="submitBtn"
+      id="submitBtn"
+      (click)="onClick($event)"
+      [label]="submitLabel"
+    ></app-buttons>
+  </form>
+</div>

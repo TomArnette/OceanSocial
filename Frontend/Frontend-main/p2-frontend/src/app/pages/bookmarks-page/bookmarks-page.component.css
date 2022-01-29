@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1.6rem;
+}
+header {
+  top: 2rem;
+  padding: 1.2rem;
+  border-radius: 1.5rem;
+  background-color: var(--component-bg);
+  position: fixed;
+  height: 9rem;
+}
+.post-feed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.post-form {
+  position: fixed;
+  right: 1.6rem;
+}
+
+.feed-container {
+  top: 11rem;
+  position: absolute;
+  overflow: auto;
+}

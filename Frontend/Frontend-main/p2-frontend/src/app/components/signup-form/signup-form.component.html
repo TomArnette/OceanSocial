@@ -1,0 +1,155 @@
+<div class="signup-container">
+  <div class="left">
+    <div class="headline">
+      <h2>Sign Up</h2>
+      <p>And make waves with all the other fish in the sea.</p>
+    </div>
+    <div class="login">
+      <p>Already have an account?</p>
+      <a (click)="toggleForm()">login here</a>
+    </div>
+  </div>
+
+  <div class="right">
+    <form [formGroup]="signupForm">
+      <div class="full-name">
+        <!-- FIRST NAME -->
+        <div class="form-row">
+          <label for="firstName">First Name:</label>
+          <input
+            id="first-name"
+            class="text-field"
+            [style.width.px]="180"
+            type="text"
+            formControlName="firstName"
+          />
+          <div class="warn">
+            <ng-container>
+              <div
+                class="invalid"
+                *ngIf="
+                  firstName.hasError('required') &&
+                  (firstName.dirty || firstName.touched)
+                "
+              >
+                Must enter first name
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <!-- LAST NAME -->
+        <div class="form-row">
+          <label for="lastName">Last Name:</label>
+          <input
+            id="last-name"
+            class="text-field"
+            [style.width.px]="180"
+            type="text"
+            formControlName="lastName"
+          />
+          <div class="warn">
+            <ng-container>
+              <div
+                class="invalid"
+                *ngIf="
+                  lastName.hasError('required') &&
+                  (lastName.dirty || lastName.touched)
+                "
+              >
+                Must enter last name
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <!-- EMAIL ADDRESS -->
+      <div class="form-row">
+        <label for="email">Email:</label>
+        <input
+          id="email"
+          class="text-field"
+          type="text"
+          formControlName="email"
+        />
+        <div class="warn">
+          <ng-container>
+            <div
+              class="invalid"
+              *ngIf="
+                email.hasError('required') && (email.dirty || email.touched)
+              "
+            >
+              Must enter an email address
+            </div>
+            <div
+              *ngIf="email.hasError('email') && (email.dirty || email.touched)"
+            >
+              Email address must be valid
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <!-- USERNAME -->
+      <div class="form-row">
+        <label for="username">Username:</label>
+        <input
+          id="username"
+          class="text-field"
+          type="text"
+          formControlName="username"
+        />
+        <div class="warn">
+          <ng-container>
+            <div
+              class="invalid"
+              *ngIf="
+                username.hasError('required') &&
+                (username.dirty || username.touched)
+              "
+            >
+              Must enter a username
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <!-- PASSWORD -->
+      <div class="form-row">
+        <label for="password">Password:</label>
+        <input
+          id="password"
+          class="text-field"
+          type="password"
+          formControlName="password"
+          minlength="8"
+        />
+        <div class="warn">
+          <ng-container>
+            <div
+              class="invalid"
+              *ngIf="
+                password.hasError('required') &&
+                (password.dirty || password.touched)
+              "
+            >
+              Must enter a password
+            </div>
+            <div
+              *ngIf="
+                password.hasError('minlength') &&
+                (password.dirty || password.touched)
+              "
+            >
+              Password must be 8 or more characters
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <app-buttons
+        class="loginPgBtn"
+        id="signupBtn"
+        (onClick)="signUp($event)"
+        [label]="signUpLabel"
+      ></app-buttons>
+    </form>
+  </div>
+</div>

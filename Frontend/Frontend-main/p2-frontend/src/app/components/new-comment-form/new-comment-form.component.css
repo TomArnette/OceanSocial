@@ -1,0 +1,51 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 1.6rem;
+  padding: 0.5rem;
+  width: 500px;
+  background-color: var(--component-bg);
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+}
+
+h2 {
+  font-weight: bold;
+  color: var(--font-color);
+}
+
+label {
+  color: var(--font-color);
+}
+
+textarea {
+  width: 250px;
+  background-color: var(--input-bg);
+  border: 2px solid transparent;
+  border-radius: 1.6rem;
+  padding: 1rem 1.4rem;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  outline: none;
+  color: var(--font-color);
+}
+
+textarea:focus,
+textarea:hover {
+  border: 2px solid var(--input-border);
+}

@@ -1,0 +1,54 @@
+<div class="user-info-container">
+  <div class="profile-body">
+    <div class="followers-following">
+      <h2>Following Info:</h2>
+      <app-buttons
+        class="followBtn"
+        id="followBtn"
+        (onClick)="follow()"
+        [label]="followLabel"
+      ></app-buttons>
+    </div>
+
+    <div class="fol-info">
+      <div class="fol-con" (click)="open(followersModal)">
+        <p>Followers</p>
+        <h1 class="num">{{ followers }}</h1>
+      </div>
+      <div class="fol-con" (click)="openFollowingPage()">
+        <p>Following</p>
+        <h1 class="num">{{ following }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #followersModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Followed By:</h4>
+    <button
+      type="button"
+      class="btn btn-danger"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    >
+      <span aria-hidden="true">X</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group" *ngFor="let follower of arrayOfFollowers">
+      <div>
+        <a
+          class="name text-decoration-none pe-auto"
+          role="button"
+          data-bs-toggle="button"
+          title="View Profile"
+          (click)="goToProfile(follower.data.userId)"
+        >
+          {{ follower.data.firstName | titlecase }}
+          {{ follower.data.lastName | titlecase }}
+        </a>
+      </div>
+    </div>
+  </div>
+</ng-template>

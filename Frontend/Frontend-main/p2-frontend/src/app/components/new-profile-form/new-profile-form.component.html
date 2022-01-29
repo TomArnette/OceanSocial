@@ -1,0 +1,113 @@
+<div class="profile-form-container">
+  <div [ngSwitch]="current">
+    <div id="profile-image-form" *ngSwitchCase="'image'">
+      <h2>Upload a profile image:</h2>
+      <div class="error" *ngIf="warn">You must choose an image first.</div>
+      <img id="profile-img" [src]="displayUrl" />
+      <form [formGroup]="imageForm" enctype="multipart/form-data">
+        <div class="form-row">
+          <button id="uploadBtn" type="button" (click)="fileInput.click()">
+            <span>Add image</span>
+            <input
+              #fileInput
+              id="profileImage"
+              type="file"
+              (change)="onFileInput($event)"
+              style="display: none"
+              formControlName="file"
+              accept="image/png, image/jpeg"
+            />
+          </button>
+        </div>
+
+        <div class="button-row">
+          <app-buttons
+            class="submitBtn"
+            id="submitImgBtn"
+            (onClick)="checkImageSwitchForm($event)"
+            [label]="uploadLabel"
+          >
+          </app-buttons>
+          <app-buttons
+            class="submitBtn"
+            id="submitImgBtn"
+            (onClick)="switchForm($event)"
+            label="Skip"
+          >
+          </app-buttons>
+        </div>
+      </form>
+    </div>
+
+    <div id="profile-details-form" *ngSwitchCase="'details'">
+      <h2>Profile Details</h2>
+      <form [formGroup]="newProfileForm">
+        <div class="form-row">
+          <label for="birthday">
+            Enter your date of birth: <span>(MM-DD-YYYY)</span>
+          </label>
+          <input
+            type="text"
+            name="birthday"
+            class="text-field"
+            formControlName="bday"
+            date
+          />
+          <div class="warn">
+            <ng-container>
+              <div
+                class="invalid"
+                *ngIf="
+                  bday.hasError('required') && (bday.dirty || bday.touched)
+                "
+              >
+                Must enter a birthday
+              </div>
+              <div
+                class="invalid"
+                *ngIf="bday.hasError('usDate') && (bday.dirty || bday.touched)"
+              >
+                Birthday must be MM-DD-YYYY
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="aboutMe">Tells us about yourself:</label>
+          <textarea
+            name="aboutMe"
+            id="aboutMe"
+            cols="30"
+            rows="10"
+            formControlName="aboutMe"
+          ></textarea>
+          <div class="warn">
+            <ng-container>
+              <div
+                class="invalid"
+                *ngIf="
+                  aboutMe.hasError('required') &&
+                  (aboutMe.dirty || aboutMe.touched)
+                "
+              >
+                This field must not be empty
+              </div>
+            </ng-container>
+          </div>
+        </div>
+
+        <app-buttons
+          class="submitBtn"
+          id="submitBtn"
+          (onClick)="uploadImageAndCreateProfile($event)"
+          [label]="submitLabel"
+        ></app-buttons>
+        <div *ngIf="isLoading">
+          <div class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
